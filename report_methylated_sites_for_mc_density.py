@@ -1,5 +1,22 @@
 #!/usr/bin/env python
 
+## when need to know density of mC per some window
+## start by making a file that has all the sites that you consider methylated -- this is somewhat subjective
+## so here you can play with that 
+## input file is raw bsmap output, with all contexts combined
+## output is those lines of input that are methylated per context
+## for instance: 
+## to include all contexts over 10% threshold, use:
+## 
+##   ./report_methylated_sites_for_mc_density.py  single_c_gff  0.1 0.1 0.1 > outfile
+## 
+## while if you want those with >10% mCHH, >30% mCHG, and >60% mCG, use 
+##
+##  ./report_methylated_sites_for_mc_density.py  single_c_gff  0.1 0.3 0.6 
+##
+## to completely exclude a particular context, then use a value greater than 1 
+## so for non-CG meth density only, use 0.1 0.1 1.1 for instance
+
 import sys, time
 
 if len(sys.argv) == 1: # no arguments, so print help message
